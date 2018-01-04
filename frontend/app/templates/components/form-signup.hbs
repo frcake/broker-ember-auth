@@ -1,0 +1,18 @@
+<form {{action "submit" on="submit"}}>
+  <!-- <div class="form-col">
+              <input type="text" placeholder="Username">
+            </div> -->
+  <div class="form-col">
+    {{input type="email" value=user.email placeholder="Email"}}
+  </div>
+  <div class="form-col">
+    {{input value=user.password type="password" placeholder="Password"}}
+  </div>
+  <div class="form-col">
+    {{input value=user.passwordConfirmation type="password" placeholder="Password Again"}}
+  </div>
+  <button type="submit" class="btn btn-main btn-block">SignUp</button>
+</form>
+{{#if errorMessage}}
+  {{errorMessage}}
+{{/if}}
