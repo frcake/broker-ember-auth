@@ -1,5 +1,5 @@
 class SessionsController < Devise::SessionsController
-  respond_to :html, :json
+  respond_to :json
 
   def create
     super do |user|
@@ -12,7 +12,7 @@ class SessionsController < Devise::SessionsController
           # admin: user.admin,
           # super_admin: user.super_admin
         }
-        render(json: data, status: 201) && return
+        render(jsonapi: data, status: 201) && return
       end
     end
   end

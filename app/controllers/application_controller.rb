@@ -1,10 +1,8 @@
 class ApplicationController < ActionController::API
-  # include Pundit
   include ActionController::HttpAuthentication::Basic::ControllerMethods
   include ActionController::HttpAuthentication::Token::ControllerMethods
   before_action :authenticate_user_from_token!
   # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
-  # TODO: MAJOR: Fix N+1 queries everywhere
 
   private
 
