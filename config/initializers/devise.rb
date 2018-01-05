@@ -6,13 +6,13 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '0724ebd39e623b85c4522a10d73b890fdb1f5a6a229fc45f3fd6e0cf05428363ffd365ecfe9ea731c862528bb25f9d1c815daa5b0e53a3aeec7a1d6915a66def'
+  # config.secret_key = 'a7efe6584eaab60020d1971195a002fbfc1f2708c541541b66290d3e78a0b761ee398395c495aa73c9253aed9cc8111ba9bb351ab1417aa5efa75736c4287d1b'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = ENV['GMAIL_USERNAME']
+  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -108,7 +108,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '0b1d87f7695fd920b0f82aa334ee5a234e8fe5213b9e52bfa3cb707f641629a65a5e22a04f7b22618d2add2f170d69696cecbda548a09ba1bfe99181d7376451'
+  # config.pepper = '260175dd8b142751680beef8e86b60f5ad9f637fc5c46832812a307cb438369c5f5db46b4890fb8f3a655d09881b1c64999e830f1cbcab0e50cd3ad9efe262d0'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -136,7 +136,7 @@ Devise.setup do |config|
   # initial account confirmation) to be applied. Requires additional unconfirmed_email
   # db field (see migrations). Until confirmed, new email is stored in
   # unconfirmed_email column, and copied to email column on successful confirmation.
-  config.reconfirmable = true
+  config.reconfirmable = false
 
   # Defines which key will be used when confirming an account
   # config.confirmation_keys = [:email]
@@ -242,6 +242,7 @@ Devise.setup do |config|
   # should add them to the navigational formats lists.
   #
   # The "*/*" below is required to match Internet Explorer requests.
+  #  config.navigational_formats = [:json]
   # config.navigational_formats = ['*/*', :html]
 
   # The default HTTP method used to sign out a resource. Default is :delete.

@@ -9,5 +9,5 @@ export default DeviseAuthenticator.extend({
 	identificationAttributeName: 'email',
 	// resourceName: 'user',
 	// rejectWithResponse: true,
-	//serverTokenEndpoint: 'http://localhost:3000/users/sign_in'
+	serverTokenEndpoint: 'http://localhost:3000/users/sign_in'
 });
