@@ -1,13 +1,14 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  vessels: Ember.computed('', function() {
+	session: Ember.inject.service('session'),
 
-    return this.get('store').findAll('vessel');
-  }),
-  actions: {
-    transitionTo() {
-      this.transitionToRoute('login');
-    }
-  }
+	actions: {
+		logout() {
+			this.get('session').invalidate();
+		},
+		transitionTo() {
+			this.transitionToRoute('login');
+		}
+	}
 });
