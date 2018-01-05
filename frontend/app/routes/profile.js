@@ -17,11 +17,11 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 		updateProfile(updateUser) {
 			updateUser.save().catch((error) => {
 				if (Ember.isEmpty(error.errors)) {
-					skyFlash("User successfully updated", { type: 'success', duration: 4000 });
+					//skyFlash("User successfully updated", { type: 'success', duration: 4000 });
 					this.transitionTo("profile");
 				} else {
 					error.errors.forEach((error) => {
-						skyFlash(error.detail, { type: 'error', duration: 4000 });
+						//skyFlash(error.detail, { type: 'error', duration: 4000 });
 					});
 				}
 			})

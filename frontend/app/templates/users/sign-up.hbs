@@ -1,1 +1,23 @@
-{{form-signup user=model triggerSave=(action "triggerSaveChain") errorMessage=errorMessage}}
+{{!-- form-signup user=model triggerSave=(action "triggerSaveChain") errorMessage=errorMessage --}}
+<form>
+  <!-- <div class="form-col">
+              <input type="text" placeholder="Username">
+            </div> -->
+  <div class="form-col">
+    {{input type="email" value=model.email placeholder="Email"}}
+  </div>
+  <div class="form-col">
+    {{input value=model.password type="password" placeholder="Password"}}
+  </div>
+  <div class="form-col">
+    {{input value=model.passwordConfirmation type="password" placeholder="Password Again"}}
+  </div>
+  <button type="submit" {{action 'triggerSaveChain' model}} class="btn btn-main btn-block">SignUp</button>
+</form>
+{{#if errorMessage}}
+  {{errorMessage}}
+{{/if}}
+
+{{#if saveNewUser.isRunning}}
+  <h1>Awaiting SaveAction</h1>
+{{/if}}
