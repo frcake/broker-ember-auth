@@ -1,61 +1,46 @@
-
-# TODO: needs to chage all render json error and add serializer: ActiveModel::Serializer::ErrorSerializer
-class Api::V1::UsersController < ApplicationController
+class Api::V1::UsersController < Api::V1::BaseController
   before_action :set_user, only: %i[show update destroy]
   before_action :authenticate_user!, only: %i[index show update]
   def index
-    render json: @users = User.all, status: 200
+    render json: User.all, status: :ok
   end
 
   def show
-    if @user.present?
-      render json: @user = User.find(params[:id]), status: 200
-    else
-      render status: 401
-    end
+    render jsonapi: @user, status: :ok
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
       render jsonapi: @user,
-             status: 200
+             status: :ok
     else
-      render jsonapi: @user,
-             serializer: ActiveModel::Serializer::ErrorSerializer,
-             status: :unprocessable_entity
+      record_not_valid @user
     end
   end
 
   def update
     if @user.update(user_params)
       render jsonapi: @user,
-             serializer: ActiveModel::Serializer::ErrorSerializer,
-             status: 200
+             status: :ok
     else
-      render jsonapi: @user,
-             serializer: ActiveModel::Serializer::ErrorSerializer,
-             status: :unprocessable_entity
+      record_not_valid @user
     end
   end
 
   def destroy
-    if @user.present?
-      @user.destroy
-      render status: 200
-    else
-      render status: 401
-    end
+    @user.destroy
+    render  status: :ok
   end
 
   private
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find_by_id(params[:id])
+    not_found unless @user.present?
   end
 
   def user_params
-    res = ActiveModelSerializers::Deserialization.jsonapi_parse(params)
-    res
+    ActiveModelSerializers::Deserialization.jsonapi_parse(params)
   end
 end
