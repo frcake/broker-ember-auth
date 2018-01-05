@@ -9,8 +9,9 @@ const Router = Ember.Router.extend({
 Router.map(function() {
 	this.route('index');
 	this.route('login', { path: '/' });
-	this.route('users/confirmation');
+
 	this.route('users', function() {
+		this.route('confirmation');
 		this.route('edit');
 		this.route('sign-up');
 		this.route('show', { path: ':user_id' })
@@ -18,6 +19,7 @@ Router.map(function() {
 		this.route('password', function() {
 			this.route('edit');
 		});
+
 	});
 	this.route('profile');
 	this.route('recover-password');
