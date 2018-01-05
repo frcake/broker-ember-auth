@@ -1,4 +1,3 @@
-// TODO: it will be removed
 import Ember from 'ember';
 import { task } from 'ember-concurrency';
 import formSignup from '../../mixins/forms/form-signup'

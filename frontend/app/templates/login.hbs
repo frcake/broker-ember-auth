@@ -1,1 +1,21 @@
-{{form-login}}
+<form>
+  <!-- <div class="form-col">
+              <input type="text" placeholder="Username">
+            </div> -->
+  <div class="form-col">
+    {{input value=identification placeholder="Email"}}
+  </div>
+  <div class="form-col">
+    {{input value=password type="password" placeholder="Password"}}
+  </div>
+  <button type="submit" {{action 'triggerLoginChain'}} class="btn btn-main btn-block">Login</button>
+</form>
+<div class="spacer-sm"></div>
+<div class="spacer-sm"></div>
+<div class="text-center">
+  {{#link-to 'recover-password' invokeAction='passwordReset' }} Forgot Password
+  {{/link-to}}
+</div>
+{{#if errorMessage}}
+  {{errorMessage}}
+{{/if}}

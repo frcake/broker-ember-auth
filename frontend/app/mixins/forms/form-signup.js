@@ -2,8 +2,7 @@ import Ember from 'ember';
 import {task} from 'ember-concurrency';
 
 export default Ember.Mixin.create({
-  // tagName: '',
-  // session: Ember.inject.service('session'),
+ 
   saveNewUser: task(function * (newUser) {
     //yield the promise response or catch any errors
     try {
