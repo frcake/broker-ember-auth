@@ -7,7 +7,6 @@ export default Ember.Controller.extend(formLogin,{
   session: Ember.inject.service('session'),
 
   actions: {
-
     triggerLoginChain() {
       this.get('authenticateUser').perform();
     }
