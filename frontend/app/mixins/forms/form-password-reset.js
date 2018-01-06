@@ -28,8 +28,7 @@ export default Ember.Mixin.create({
   }),
 
   stripString: task(function*(str) {
-    let strippedStr = str.replace("_", " ").replace("[", "").replace("]", "").replace("{", "").replace("}", "").replace("(", "").replace(")", "").replace('"', '').replace('"', '').replace(':', ' ');
-
+    let strippedStr = str.replace(/[.*+?^${}()|[\]\\"]/g, '').replace(/[:_]/g," ").replace(/,/gi,"\n");
     return strippedStr
   }),
 
