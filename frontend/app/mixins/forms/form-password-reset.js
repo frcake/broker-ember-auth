@@ -14,7 +14,7 @@ export default Ember.Mixin.create({
       passwordReset = yield this.get('ajax').request(`/users/password?reset_password_token=${reset_password_token}&email=${mail}&password=${password}&password_confirmation=${passwordConfirmation}`, {method: 'PUT'})
       this.transitionToRoute('login');
     } catch (error) {
-      this.set('errorMessage',error.errors['password_confirmation'][0]);
+      this.set('errorMessage',error.payload.errors.password_confirmation[0]);
     }
   })
 });
