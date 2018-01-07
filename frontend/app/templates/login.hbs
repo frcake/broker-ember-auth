@@ -1,21 +1,54 @@
-<form>
-  <!-- <div class="form-col">
-              <input type="text" placeholder="Username">
-            </div> -->
-  <div class="form-col">
-    {{input value=identification placeholder="Email"}}
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-login">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-xs-6">
+              {{#link-to 'login' id="login-form-link" }} Login {{/link-to}}
+            </div>
+            <div class="col-xs-6">
+              {{#link-to 'users.sign-up' id="register-form-link" }} Register {{/link-to}}
+            </div>
+          </div>
+          <hr>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-12">
+              <form id="login-form" action="https://phpoll.com/login/process" method="post" role="form" style="display: block;">
+                <div class="form-group">
+                  {{input type="text" name="email"  id="username" tabindex="1" class="form-control" value=identification placeholder="Email"}}
+                </div>
+                <div class="form-group">
+                  {{input value=password name="password" id="password" tabindex="2" class="form-control" type="password" placeholder="Password"}}
+                </div>
+                <div class="form-group text-center">
+                  <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
+                  <label for="remember"> Remember Me</label>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                      <input {{action 'triggerLoginChain'}} type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="text-center">
+                        {{#link-to 'recover-password' invokeAction='passwordReset' class="forgot-password" }} Forgot Password
+                        {{/link-to}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="form-col">
-    {{input value=password type="password" placeholder="Password"}}
-  </div>
-  <button type="submit" {{action 'triggerLoginChain'}} class="btn btn-main btn-block">Login</button>
-</form>
-<div class="spacer-sm"></div>
-<div class="spacer-sm"></div>
-<div class="text-center">
-  {{#link-to 'recover-password' invokeAction='passwordReset' }} Forgot Password
-  {{/link-to}}
 </div>
-{{#if errorMessage}}
-  {{errorMessage}}
-{{/if}}
