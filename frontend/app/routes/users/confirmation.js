@@ -5,7 +5,6 @@ import Ember from 'ember'
 export default Ember.Route.extend({
 	ajax: Ember.inject.service(),
 	beforeModel: function(transition) {
-		debugger;
 		return this.get('ajax').request(`/users/confirmation?confirmation_token=${ transition.queryParams.confirmation_token }`, {
 			method: 'GET',
 		}).then(() => this.transitionTo('login'));

@@ -1,0 +1,26 @@
+<div id='auth-container' class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="row">
+        <div class="col-xs-6">
+          {{#link-to 'login' id="login-form-link" }} Login {{/link-to}}
+        </div>
+        <div class="col-xs-6">
+          {{#link-to 'users.sign-up' id="register-form-link" }} Register {{/link-to}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          {{#bs-form model=user onSubmit=(action "triggerLoginChain") novalidate=true as |form|}}
+            {{form.element controlType="email" label="Email" placeholder="Email" property="email"}} {{form.element controlType="password" label="Password" placeholder="Password" property="password"}} {{bs-button defaultText="Login" type="primary" buttonType="startSave"}}
+          {{/bs-form}}
+        </div>
+      </div>
+      {{#link-to 'recover-password' invokeAction='passwordReset' class="forgot-password" }} Forgot Password
+      {{/link-to}}
+    </div>
+  </div>
+  {{#if errorMessage}}
+    {{alert-centered alertType="warning" alert=errorMessage}}
+  {{/if}}
+</div>
