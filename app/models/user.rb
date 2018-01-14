@@ -1,9 +1,9 @@
 # TODO: more validation if it is needed , validation frontend fro password-conformation
 class User < ApplicationRecord
- has_one: :intent
- has_one: :interest
- has_one: :profiler
- has_one: :recommendation
+  has_one :intent
+  has_one :interest
+  has_one :profiler
+  has_one :recommendation
 
   before_save :ensure_authentication_token
 

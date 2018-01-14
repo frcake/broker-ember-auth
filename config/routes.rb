@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users do
-        resources :intents, only: :new
-        resources :interests, only: :new
+        resources :intents, only: %i[new create index]
+        resources :interests, only: %i[new create index]
       end
     end
   end
