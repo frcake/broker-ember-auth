@@ -1,5 +1,10 @@
 # TODO: more validation if it is needed , validation frontend fro password-conformation
 class User < ApplicationRecord
+ has_one: :intent
+ has_one: :interest
+ has_one: :profiler
+ has_one: :recommendation
+
   before_save :ensure_authentication_token
 
   # Include default devise modules. Others available are:
@@ -28,4 +33,4 @@ class User < ApplicationRecord
       break token unless User.where(authentication_token: token).first
     end
   end
-end\
+end

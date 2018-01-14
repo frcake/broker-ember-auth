@@ -10,10 +10,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180104160631) do
+ActiveRecord::Schema.define(version: 20180112141721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "intents", force: :cascade do |t|
+    t.bigint "user_id"
+    t.boolean "jam"
+    t.boolean "recording"
+    t.boolean "live"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_intents_on_user_id"
+  end
+
+  create_table "interests", force: :cascade do |t|
+    t.bigint "user_id"
+    t.boolean "band"
+    t.boolean "jam"
+    t.boolean "collaboration"
+    t.boolean "partner"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_interests_on_user_id"
+  end
+
+  create_table "profilers", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "age"
+    t.boolean "gender"
+    t.decimal "location_lat"
+    t.decimal "location_lon"
+    t.boolean "pop"
+    t.boolean "rock"
+    t.boolean "jazz"
+    t.boolean "folk"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profilers_on_user_id"
+  end
+
+  create_table "recommendations", force: :cascade do |t|
+    t.bigint "user_id"
+    t.text "recommended_users"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_recommendations_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -33,10 +77,16 @@ ActiveRecord::Schema.define(version: 20180104160631) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "authentication_token"
+    t.string "name"
+    t.text "description"
+    t.text "eperience"
     t.index ["authentication_token"], name: "index_users_on_authentication_token"
-    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "intents", "users"
+  add_foreign_key "interests", "users"
+  add_foreign_key "profilers", "users"
+  add_foreign_key "recommendations", "users"
 end

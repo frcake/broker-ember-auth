@@ -1,0 +1,33 @@
+User has_many
+ other_users (follow)
+ images (imageable - polymorphic)
+ videos (uploads)
+
+User has_one
+ name
+ description
+ experience
+ instrument: Array (table with instruments)
+
+
+ has_one
+ want: Live Jam Recording/album
+
+ has_one
+ looking_for: Band , Jam , Collab , Music Partner
+
+ has_one
+ recommendation
+
+
+ profiler
+
+---------------------------
+-Profiler fields should be-
+---------------------------
+Age
+Gender
+Location : (lat long?)
+Genres : Rock , Pop , etc
+
+User has_one
