@@ -15,6 +15,9 @@ Router.map(function() {
     this.route('edit');
     this.route('sign-up');
     this.route('show', { path: ':user_id' }, function() {
+      this.route('intents', function() {
+        this.route('new');
+      });
       this.route('interests', function() {
         this.route('new');
       });
@@ -24,13 +27,6 @@ Router.map(function() {
       this.route('edit');
     });
 
-    this.route('intents', function() {
-      this.route('new');
-    });
-
-    this.route('interests', function() {
-      this.route('new');
-    });
   });
   this.route('profile');
   this.route('recover-password');
